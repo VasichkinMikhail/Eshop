@@ -1,13 +1,13 @@
-package ru.budharain.eshop;
+package ru.budharain.admin_eshop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EshopApplication {
+public class AdminEshopApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(EshopApplication.class, args);
+        SpringApplication.run(AdminEshopApplication.class, args);
     }
 
 }
