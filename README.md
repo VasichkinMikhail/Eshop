@@ -7,5 +7,24 @@
 4. picture_service. Модуль для работы с картинками. Реализованы как DTO, сервис, контроллер.
 5. shop-delivery-service. Модуль для работы с статусами заказов через RabbitMq.
 6. shop-picture-service-api. Апи через которое идет работа с picture_service.
+В контроллерах реализованы только основные методы add, delete, update.
 На проекте использованы:
-https://github.com/devicons/devicon/blob/master/icons/docker/docker-original-wordmark.svg
+на Java 11
+Сборка Maven
+Архитектура REST
+
+SprinFramework
+SpringBoot
+Lombok(для работы с БД)
+Hebernate(для работы с БД)
+Postgresql
+Docker
+SpringCloud(не закончено)
+SpringSecurity
+Liquibase(для работы с БД)
+RabbitMQ
+<!-- in your header -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+<!-- in your body -->
+<i class="devicon-devicon-plain"></i>
