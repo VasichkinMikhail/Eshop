@@ -1,18 +1,28 @@
 package ru.budharain.model;
 
-import lombok.Data;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Data
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
 
     @Column(nullable = false, name = "order_date")
     private LocalDateTime orderDate;
@@ -20,7 +30,16 @@ public class Order {
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id")
     private User user;
-
+    @Column
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderLineItems> orderLineItems;
+    public Order(Long id, LocalDateTime orderDate, OrderStatus status, User user) {
+        this.id = id;
+        this.orderDate = orderDate;
+        this.status = status;
+        this.user = user;
+    }
+    public enum OrderStatus {
+        CREATED, PROCESSED, IN_DELIVERY, DELIVERED, CLOSED, CANCELED
+    }
 }

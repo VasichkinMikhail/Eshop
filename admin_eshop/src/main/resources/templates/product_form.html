@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header.html :: head">
+</head>
+
+<body>
+
+<nav th:replace="fragments/header.html :: navigation">
+</nav>
+
+<div class="container">
+    <div class="row py-2">
+        <div class="col-12">
+            <form th:action="@{/product}" method="post" th:object="${product}" enctype="multipart/form-data">
+                <input type="hidden" id="id" name="id" th:field="*{id}">
+
+                <div class="form-group">
+                    <label>Name</label>
+                    <input th:field="*{name}" type="text" class="form-control" id="name" name="productName" placeholder="Enter product name">
+                    <p class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                </div>
+
+                <div class="form-group">
+                    <label>Price</label>
+                    <input th:field="*{price}" type="number" class="form-control" id="price" name="price" placeholder="Enter product price">
+                    <p class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>
+                </div>
+
+                <div class="form-group">
+                    <la>Description</la>
+                    <input th:field="*{description}" type="text" class="form-control" id="description" name="description" placeholder="Enter product description">
+                    <p class="text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
+                </div>
+
+                <div class="form-group">
+                    <h3 for="company">Company</h3>
+                    <select class="form-control" id="company" name="company" required>
+                        <option th:each="comp : ${companies}"
+                                th:text="${comp.name}"
+                                th:value="${comp.id}"
+                                th:selected="${product.company?.id == comp.id}"></option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <h3>Stock</h3>
+                    <input th:field="*{stock}" type="number" class="form-control" id="stock" name="stock" required placeholder="Enter product stock">
+                    <p class="text-danger" th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></p>
+                </div>
+
+                <div class="form-group">
+                    <h3>Discount</h3>
+                    <ul><label>Discount amount</label>
+                        <input th:field="*{discount.discount_amount}" type="number" class="form-control" id="discount.discount_amount" name="discount.discount_amount" required placeholder="Enter product discount amount">
+                        <p class="text-danger" th:if="${#fields.hasErrors('discount amount')}" th:errors="*{discount.discount_amount}"></p></ul>
+                    <ul><label>Data start</label>
+                        <input th:field="*{discount.dateStart}" type="date" class="form-control" id="discount.dataStart" name="discount.dataStart" required placeholder="Enter product discount start">
+                        <p class="text-danger" th:if="${#fields.hasErrors('discount start')}" th:errors="*{discount.dateStart}"></p></ul>
+                    <ul><label>Data finish</label>
+                        <input th:field="*{discount.finish}" type="date" class="form-control" id="discount.finish" name="discount.getDiscount_finish" required placeholder="Enter product discount finish">
+                        <p class="text-danger" th:if="${#fields.hasErrors('discount finish')}" th:errors="*{discount.finish}"></p></ul>
+                </div>
+                <div class="form-group">
+                    <label>Key words</label>
+                    <input th:field="*{keyWords}" type="text" class="form-control" id="keyWords" name="keyWords" required placeholder="Enter product key Words">
+                    <p class="text-danger" th:if="${#fields.hasErrors('keyWords')}" th:errors="*{keyWords}"></p>
+                </div>
+                <div class="form-group">
+                    <h3>Characteristic</h3>
+                    <ul><label>Brand</label>
+                        <input th:field="*{characteristic.brand}" type="text" class="form-control" id="characteristic.brand" name="characteristic.brand" required placeholder="Enter product brand">
+                        <p class="text-danger" th:if="${#fields.hasErrors('characteristic.brand')}" th:errors="*{characteristic.brand}"></p></ul>
+                    <ul><label>Compound</label>
+                        <input th:field="*{characteristic.compound}" type="text" class="form-control" id="characteristic.compound" name="characteristic.compound" required placeholder="Enter product compound">
+                        <p class="text-danger" th:if="${#fields.hasErrors('characteristic.compound')}" th:errors="*{characteristic.compound}"></p></ul>
+                    <ul><label>Size</label>
+                        <input th:field="*{characteristic.size}" type="text" class="form-control" id="characteristic.size" name="characteristic.size" required placeholder="Enter product size">
+                        <p class="text-danger" th:if="${#fields.hasErrors('characteristic.size')}" th:errors="*{characteristic.size}"></p></ul>
+                    <ul><label>Color</label>
+                        <input th:field="*{characteristic.color}" type="text" class="form-control" id="characteristic.color" name="characteristic.color" required placeholder="Enter product color">
+                        <p class="text-danger" th:if="${#fields.hasErrors('characteristic.color')}" th:errors="*{characteristic.color}"></p></ul>
+                    <ul><label>Main characteristic</label>
+                        <input th:field="*{characteristic.mainCharact}" type="text" class="form-control" id="characteristic.mainCharact" name="characteristic.mainCharact" required placeholder="Enter product main characteristic">
+                        <p class="text-danger" th:if="${#fields.hasErrors('characteristic.mainCharact')}" th:errors="*{characteristic.mainCharact}"></p></ul>
+                </div>>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<th:block th:replace="fragments/footer.html :: scripts">
+</th:block>
+
+</body>
+
+</html>
