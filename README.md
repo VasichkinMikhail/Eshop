@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 Проект Интернет магазина реализован 5 модулями:
 1. admin_eshop. Админская часть где находятся слои DTO для обращения к модулю БД. Сервисы, Контроллеры для работы с User и Product. 
 Так же реализованна часть отвечающая за Security. И страницы html.
