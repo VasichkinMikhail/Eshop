@@ -1,9 +1,12 @@
 package ru.budharain.model;
 
+import javax.persistence.*;
 import lombok.*;
 
-import jakarta.persistence.*;
+
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 @Entity
 @Getter
@@ -30,6 +33,18 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+    @Column
+    @OneToMany(mappedBy = "users",
+            orphanRemoval = true,
+            cascade = CascadeType.ALL)
+    private List<Company> companies =new ArrayList<>();
 
-
+    public User(Long id, String userName, String mail, String password, BigDecimal balance, Set<Role> roles) {
+        this.id = id;
+        this.userName = userName;
+        this.mail = mail;
+        this.password = password;
+        this.balance = balance;
+        this.roles = roles;
+    }
 }

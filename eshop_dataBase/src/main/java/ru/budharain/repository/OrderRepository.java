@@ -11,7 +11,7 @@ public interface OrderRepository extends JpaRepository<Order, Long>{
             "from Order o " +
             "inner join fetch o.user u " +
             "inner join fetch o.orderLineItems i " +
-            "where u.username = :username")
+            "where u.userName = :username")
     List<Order> findAllByUsername(String username);
 
 }
