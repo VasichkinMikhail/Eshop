@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -27,7 +27,7 @@ public class Picture {
 
     @Column(name = "storage_file_name", length = 256, nullable = false, unique = true)
     private String storageFileName;
-
+    @Column
     @ManyToOne(optional = false)
     private Company company;
 

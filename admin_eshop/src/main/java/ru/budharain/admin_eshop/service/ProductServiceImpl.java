@@ -108,7 +108,7 @@ public class ProductServiceImpl implements ProductService {
                 product.getStock(),
                 new DiscountDto(product.getDiscount().getId(),
                         product.getDiscount().getDiscount_amount(),product.getDiscount().getDateStart(),product.getDiscount().getFinish()),
-                product.getComments().stream().toList(),
+                product.getComments().stream().collect(Collectors.toList()),
                 product.getKeyWords(),
                 new CharacteristicDto(product.getCharacteristic().getId(),product.getCharacteristic().getBrand(),
                         product.getCharacteristic().getCompound(),product.getCharacteristic().getSize(),product.getCharacteristic().getColor(),

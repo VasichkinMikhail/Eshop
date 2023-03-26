@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +34,9 @@ public class Company {
             orphanRemoval = true,
             cascade = CascadeType.ALL)
     private List<Product> products = new ArrayList<>();
+    @Column
+    @ManyToOne(optional = false)
+    private User owner;
 
     public Company(Long id, String name, String description, List<Picture> logo) {
         this.id = id;
@@ -41,4 +44,5 @@ public class Company {
         this.description = description;
         this.logo = logo;
     }
+
 }

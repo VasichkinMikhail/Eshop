@@ -7,4 +7,5 @@ import ru.budharain.model.Company;
 
 public interface CompanyRepository extends JpaRepository<Company, Long>, JpaSpecificationExecutor<Company> {
 
+
 }
